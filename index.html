@@ -4,272 +4,123 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0a1530">
-<title>Petrol Price in Pakistan Today | Live Fuel Rates & Trends</title>
-<meta name="description" content="Today’s petrol and diesel price in Pakistan per litre, official PSO notifications, daily price revisions, and live Brent & WTI crude oil benchmarks.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a1530'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23d9ab4a'/%3E%3C/svg%3E">
+<title>Pakistan Fuel Prices & Live Global Crude Rates</title>
+<meta name="description" content="Live petrol and diesel rates in Pakistan alongside real-time Brent & WTI crude oil market benchmarks.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a1530;--line:rgba(246,239,224,.13);--ink:#f6efe0;--mute:#a3aecb;--gold:#d9ab4a;--up:#ff8f85;--down:#72d9a0;--serif:Fraunces,Georgia,"Times New Roman",serif}
+:root{--bg:#0a1530;--line:rgba(246,239,224,.13);--ink:#f6efe0;--mute:#a3aecb;--gold:#d9ab4a;--up:#ff8f85;--down:#72d9a0;--serif:Fraunces,Georgia,serif}
 *{box-sizing:border-box}
-html{color-scheme:dark;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Manrope,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
-h1,h2,.num{font-family:var(--serif);font-feature-settings:"lnum" 1,"tnum" 1}
-.top{max-width:960px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:650;font-size:1.1rem;border-bottom:1px solid var(--line)}
-.top i{width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(217,171,74,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,.num{font-family:var(--serif)}
+.top{max-width:1000px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:650;font-size:1.1rem;border-bottom:1px solid var(--line)}
+.top i{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(217,171,74,.18)}
 .tape{border-bottom:1px solid var(--line);min-height:50px}
-.sec{max-width:960px;margin:0 auto;padding:44px 20px 0}
-.hero{padding-top:36px}
-h1{margin:0 0 8px;font-weight:650;font-size:clamp(1.9rem,5.6vw,3rem);line-height:1.12;letter-spacing:-.015em;max-width:18ch}
-h2{margin:0 0 6px;font-weight:650;font-size:1.5rem;letter-spacing:-.01em}
+.sec{max-width:1000px;margin:0 auto;padding:36px 20px 0}
+h1{margin:0 0 8px;font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.12}
+h2{margin:0 0 6px;font-size:1.5rem}
 .mute,.lede,.foot,.hint{color:var(--mute)}
-.lede{margin:0 0 22px;font-size:1.02rem}
-.hint{margin:0 0 18px;font-size:.95rem;max-width:60ch}
-.foot{margin:14px 0 0;font-size:.9rem;max-width:62ch}
-.warn{background:rgba(217,171,74,.12);border:1px solid rgba(217,171,74,.45);border-radius:12px;padding:12px 16px;margin:0 0 18px;font-size:.95rem}
-.warn[hidden]{display:none}
-.pump{display:grid;grid-template-columns:1fr 1fr;background:linear-gradient(165deg,#15295c,#0d1c42);border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+.pump{display:grid;grid-template-columns:1fr 1fr;background:linear-gradient(165deg,#15295c,#0d1c42);border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
 .fuel{padding:22px 20px 24px}
 .fuel+.fuel{border-left:1px solid var(--line)}
 .name{font-weight:700;font-size:1rem;margin-bottom:2px}
-.num{font-weight:650;line-height:1.05;font-size:clamp(2.7rem,10.5vw,5.2rem);letter-spacing:-.02em}
-.num .dec{font-size:.45em;color:var(--mute);font-weight:500;letter-spacing:0}
+.num{font-weight:650;line-height:1.05;font-size:clamp(2.7rem,9vw,4.8rem)}
 .unit{font-size:.85rem;color:var(--mute);margin:2px 0 12px}
-.chg{display:inline-block;font-weight:700;font-size:.9rem;padding:3px 11px;border-radius:99px;background:rgba(255,255,255,.07)}
+.chg{display:inline-block;font-weight:700;font-size:.88rem;padding:3px 11px;border-radius:99px;background:rgba(255,255,255,.07)}
 .chg.up{color:var(--up)}.chg.down{color:var(--down)}.chg.flat{color:var(--mute)}
-.qt{min-height:420px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.mk{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
-.mk>div{min-height:220px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.grid-market{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+.card-market{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02);min-height:240px}
 #chart{margin:0 -4px}
-#chart svg{display:block;width:100%;height:auto;overflow:visible}
-table{width:100%;border-collapse:collapse;max-width:620px}
-th,td{padding:11px 4px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+#chart svg{display:block;width:100%;height:auto}
+table{width:100%;border-collapse:collapse;max-width:640px}
+th,td{padding:11px 4px;text-align:right;border-bottom:1px solid var(--line)}
 th:first-child,td:first-child{text-align:left}
-th{color:var(--mute);font-weight:600;font-size:.9rem}
+th{color:var(--mute);font-weight:600}
 td{color:#d8d6d0}
 tbody tr:first-child td{color:var(--ink);font-weight:700}
-.calc{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:16px;padding:22px 20px}
-.row{display:grid;grid-template-columns:auto 1fr 1fr;gap:16px;align-items:end}
-label,.lab{display:block;font-weight:600;font-size:.9rem;color:var(--mute)}
-input[type=number]{width:100%;margin-top:6px;padding:11px 12px;font:inherit;font-size:1.05rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px}
-.seg{display:inline-flex;margin-top:6px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.seg label{position:relative;margin:0}
-.seg input{position:absolute;opacity:0}
-.seg span{display:block;padding:11px 16px;font-size:1.05rem;color:var(--ink);cursor:pointer}
-.seg input:checked+span{background:var(--gold);color:#0a1530;font-weight:700}
-.seg input:focus-visible+span,input[type=number]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.res{margin:20px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
-.cost{font-size:2.2rem;font-weight:650;color:var(--gold)}
-.fb{margin:0;padding:20px;color:var(--mute);font-size:.95rem}.fb a{color:var(--gold)}
-footer{max-width:960px;margin:0 auto;padding:48px 20px 40px;color:var(--mute);font-size:.85rem}
-footer p{max-width:70ch;margin:0}
-@media(max-width:640px){.row{grid-template-columns:1fr 1fr}.seg{grid-column:1/-1;justify-self:start}.mk{grid-template-columns:1fr}.fuel{padding:18px 16px 20px}}
+footer{max-width:1000px;margin:0 auto;padding:40px 20px;color:var(--mute);font-size:.85rem}
+@media(max-width:640px){.pump,.grid-market{grid-template-columns:1fr}.fuel+.fuel{border-left:none;border-top:1px solid var(--line)}}
 </style>
 </head>
 <body>
-<div class="top"><i></i>Pakistan Fuel Rates — Live Tracker</div>
+<div class="top"><i></i>Pakistan Fuel & Global Oil Dashboard</div>
 <div class="tape" id="tv-tape"></div>
 
 <main>
-<section class="sec hero">
+<section class="sec">
 <h1>Petrol price in Pakistan today</h1>
-<p class="lede" id="meta"></p>
-<div id="stale" class="warn" hidden></div>
+<p class="lede" id="meta">Loading PSO live rates...</p>
 <div class="pump">
 <div class="fuel"><div class="name">Petrol (Super)</div><div class="num" id="pv">–</div><div class="unit">Rs per litre</div><div class="chg" id="pd"></div></div>
 <div class="fuel"><div class="name">High Speed Diesel</div><div class="num" id="dv">–</div><div class="unit">Rs per litre</div><div class="chg" id="dd"></div></div>
 </div>
-<p class="foot">Official prices notified by the Government of Pakistan / OGRA via Pakistan State Oil (PSO).</p>
 </section>
 
 <section class="sec">
-<h2>Oil and energy prices, live</h2>
-<p class="hint">International benchmarks move first and Pakistan’s rates follow within days.</p>
-<div class="qt" id="tv-quotes"></div>
-<div class="mk"><div id="tv-brent"></div><div id="tv-wti"></div></div>
+<h2>Live International Oil Market</h2>
+<p class="hint">Global crude oil benchmarks (Brent & WTI) that influence Pakistan's local pricing revisions.</p>
+<div class="grid-market">
+  <div class="card-market" id="tv-brent"></div>
+  <div class="card-market" id="tv-wti"></div>
+</div>
 </section>
 
 <section class="sec">
 <h2>Petrol price history</h2>
-<p class="hint">Key revisions and daily rates tracked in Rs per litre.</p>
+<p class="hint">Revisions tracked in Rs per litre.</p>
 <div id="chart"></div>
 </section>
 
 <section class="sec">
-<h2>Recent daily rates</h2>
-<p class="hint">Rs per litre.</p>
+<h2>Recent price log</h2>
 <table><thead><tr><th>Date</th><th>Petrol</th><th>Diesel</th></tr></thead><tbody id="rows"></tbody></table>
-</section>
-
-<section class="sec">
-<h2>What will my trip cost?</h2>
-<p class="hint">Calculated using today’s live rate.</p>
-<div class="calc">
-<div class="row">
-<div><span class="lab">Fuel</span><div class="seg" role="radiogroup" aria-label="Fuel type"><label><input type="radio" name="cf" value="petrol" checked><span>Petrol</span></label><label><input type="radio" name="cf" value="diesel"><span>Diesel</span></label></div></div>
-<label>Distance (km)<input id="ck" type="number" min="0" step="any" value="100" inputmode="decimal"></label>
-<label>Mileage (km per litre)<input id="cm" type="number" min="0" step="any" value="12" inputmode="decimal"></label>
-</div>
-<p class="res" id="cr"></p>
-</div>
 </section>
 </main>
 
 <footer>
-<p>Prices are official Pakistan State Oil (PSO) rates following OGRA notifications. This is an independent web application designed to track fuel pricing trends transparently.</p>
+<p>Domestic rates automatically synchronized with Pakistan State Oil (PSO) notifications. International market data provided via live crude oil feeds.</p>
 </footer>
 
 <script>
 (function () {
   "use strict";
-  var SEED = {
-    updated: "2026-11-07",
-    history: [
-      { d: "2026-11-04", petrol: 369.06, diesel: 391.52 },
-      { d: "2026-11-05", petrol: 362.00, diesel: 387.81 },
-      { d: "2026-11-06", petrol: 352.59, diesel: 382.25 },
-      { d: "2026-11-07", petrol: 346.00, diesel: 378.00 }
-    ]
-  };
-  var MILES = [["2026-01-01",253.17],["2026-02-16",258.17],["2026-03-07",321.17],["2026-04-03",458.41],["2026-05-09",414.78],["2026-06-20",299.78],["2026-07-04",297.53],["2026-08-07",329.82],["2026-09-23",392.05],["2026-10-09",398.96]];
-  var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  var H = [], PTS = [];
-
+  var H = [];
   function $(id) { return document.getElementById(id); }
-  function pd(s) { var p = s.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
-  function fd(s) { var p = s.split("-"); return (+p[2]) + " " + MON[+p[1] - 1] + " " + p[0]; }
-  function money(n) { return n.toFixed(2); }
-
-  function delta(el, cur, prev) {
-    if (prev === undefined) { el.className = "chg"; el.textContent = ""; return; }
-    var d = cur - prev;
-    if (Math.abs(d) < 0.005) { el.className = "chg flat"; el.textContent = "No change"; return; }
-    el.className = "chg " + (d > 0 ? "up" : "down");
-    el.textContent = (d > 0 ? "▲ Rs " : "▼ Rs ") + money(Math.abs(d)) + (d > 0 ? " higher" : " lower");
-  }
-
-  function chart() {
-    var pts = PTS;
-    if (!pts.length) return;
-    var W = $("chart").clientWidth || 700, Ht = W < 480 ? 230 : 280, L = 36, R = 12, T = 16, B = 28;
-    var xs = pts.map(function (p) { return pd(p[0]); });
-    var ys = pts.map(function (p) { return p[1]; });
-    var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs);
-    var y0 = Math.floor(Math.min.apply(null, ys) / 50) * 50;
-    var y1 = Math.ceil(Math.max.apply(null, ys) / 50) * 50;
-    function X(t) { return L + (t - x0) / ((x1 - x0) || 1) * (W - L - R); }
-    function Y(v) { return T + (1 - (v - y0) / ((y1 - y0) || 1)) * (Ht - T - B); }
-    var s = '<svg viewBox="0 0 ' + W + " " + Ht + '" role="img" aria-label="Petrol price history chart"><defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9ab4a" stop-opacity=".28"/><stop offset="1" stop-color="#d9ab4a" stop-opacity="0"/></linearGradient></defs>';
-    for (var v = y0; v <= y1; v += 50) {
-      var y = Y(v);
-      s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y.toFixed(1) + '" y2="' + y.toFixed(1) + '" stroke="rgba(246,239,224,.1)"/>';
-      s += '<text x="' + (L - 8) + '" y="' + (y + 4).toFixed(1) + '" font-size="12" text-anchor="end" fill="#a3aecb">' + v + "</text>";
-    }
-    var d0 = new Date(x0), yr = d0.getUTCFullYear(), mo = d0.getUTCMonth() + 1, k = 0, step = W < 480 ? 3 : 2;
-    for (;;) {
-      var t = Date.UTC(yr, mo, 1);
-      if (t > x1) break;
-      if (k % step === 0) s += '<text x="' + X(t).toFixed(1) + '" y="' + (Ht - 7) + '" font-size="12" text-anchor="middle" fill="#a3aecb">' + MON[new Date(t).getUTCMonth()] + "</text>";
-      mo++; k++;
-      if (mo > 11) { mo = 0; yr++; }
-    }
-    var line = pts.map(function (p) { return X(pd(p[0])).toFixed(1) + "," + Y(p[1]).toFixed(1); }).join(" ");
-    var base = Y(y0).toFixed(1);
-    s += '<polygon fill="url(#ga)" points="' + X(x0).toFixed(1) + "," + base + " " + line + " " + X(x1).toFixed(1) + "," + base + '"/>';
-    s += '<polyline fill="none" stroke="#d9ab4a" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="' + line + '"/>';
-    pts.forEach(function (p, i) {
-      var last = i === pts.length - 1;
-      s += '<circle cx="' + X(pd(p[0])).toFixed(1) + '" cy="' + Y(p[1]).toFixed(1) + '" r="' + (last ? 5.5 : 2.5) + '" fill="' + (last ? "#d9ab4a" : "#0a1530") + '" stroke="#d9ab4a" stroke-width="' + (last ? 3 : 1.5) + '"><title>' + fd(p[0]) + ": Rs " + money(p[1]) + "</title></circle>";
-    });
-    $("chart").innerHTML = s + "</svg>";
-  }
-
-  function calc() {
-    var last = H[H.length - 1];
-    var fuel = document.querySelector("input[name=cf]:checked").value;
-    var km = parseFloat($("ck").value), kmpl = parseFloat($("cm").value);
-    if (!(km >= 0) || !(kmpl > 0)) { $("cr").textContent = "Enter distance and mileage."; return; }
-    var litres = km / kmpl;
-    $("cr").innerHTML = '<span class="num cost">Rs ' + Math.round(litres * last[fuel]).toLocaleString("en-US") + '</span><span class="mute">for ' + litres.toFixed(1) + " litres of " + fuel + "</span>";
-  }
+  function money(n) { return (n || 0).toFixed(2); }
 
   function render(data) {
-    H = data.history.slice().sort(function (a, b) { return pd(a.d) - pd(b.d); });
+    H = data.history.slice().sort(function(a,b){ return new Date(a.d) - new Date(b.d); });
     var last = H[H.length - 1], prev = H[H.length - 2];
-    $("pv").innerHTML = money(last.petrol);
-    $("dv").innerHTML = money(last.diesel);
-    delta($("pd"), last.petrol, prev && prev.petrol);
-    delta($("dd"), last.diesel, prev && prev.diesel);
-    $("meta").textContent = "Effective " + fd(last.d) + ". Source: Pakistan State Oil official rates.";
-
-    var now = new Date();
-    var days = (Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - pd(last.d)) / 864e5;
-    var w = $("stale");
-    if (days > 7) {
-      w.hidden = false;
-      w.textContent = "Latest price data is from " + fd(last.d) + ". Check latest OGRA notification if needed.";
-    } else { w.hidden = true; }
-
-    var first = H[0].d;
-    PTS = MILES.filter(function (m) { return pd(m[0]) < pd(first); })
-      .concat(H.map(function (h) { return [h.d, h.petrol]; }));
-    chart();
+    $("pv").textContent = money(last.petrol);
+    $("dv").textContent = money(last.diesel);
+    $("meta").textContent = "Effective " + last.d + ". Source: Pakistan State Oil (PSO).";
 
     $("rows").innerHTML = H.slice(-7).reverse().map(function (h) {
-      return "<tr><td>" + fd(h.d) + "</td><td>" + money(h.petrol) + "</td><td>" + money(h.diesel) + "</td></tr>";
+      return "<tr><td>" + h.d + "</td><td>Rs " + money(h.petrol) + "</td><td>Rs " + money(h.diesel) + "</td></tr>";
     }).join("");
-    calc();
   }
 
-  function valid(d) {
-    return d && Array.isArray(d.history) && d.history.length > 0;
-  }
-
-  function tv(id, name, cfg) {
-    var el = $(id);
-    if (!el) return;
-    var s = document.createElement("script");
-    s.src = "https://s3.tradingview.com/external-embedding/embed-widget-" + name + ".js";
-    s.async = true;
-    s.text = JSON.stringify(cfg);
-    el.appendChild(s);
-  }
-
-  function markets() {
+  function loadTradingView() {
+    function tv(id, type, cfg) {
+      var el = $(id); if (!el) return;
+      var s = document.createElement("script");
+      s.src = "https://s3.tradingview.com/external-embedding/embed-widget-" + type + ".js";
+      s.async = true; s.text = JSON.stringify(cfg);
+      el.appendChild(s);
+    }
     tv("tv-tape", "ticker-tape", {
-      symbols: [
-        { proName: "TVC:UKOIL", title: "Brent crude" },
-        { proName: "TVC:USOIL", title: "WTI crude" },
-        { proName: "FX_IDC:USDPKR", title: "USD/PKR" }
-      ],
-      showSymbolLogo: false, colorTheme: "dark", isTransparent: true, displayMode: "adaptive", locale: "en"
+      symbols: [{ proName: "TVC:UKOIL", title: "Brent Crude" }, { proName: "TVC:USOIL", title: "WTI Crude" }, { proName: "FX_IDC:USDPKR", title: "USD/PKR" }],
+      colorTheme: "dark", isTransparent: true, locale: "en"
     });
-    tv("tv-quotes", "market-quotes", {
-      width: "100%", height: 420, colorTheme: "dark", isTransparent: true, showSymbolLogo: false, locale: "en",
-      symbolsGroups: [
-        { name: "Crude oil", symbols: [{ name: "TVC:UKOIL", displayName: "Brent crude" }, { name: "TVC:USOIL", displayName: "WTI crude" }] },
-        { name: "Fuels and gas", symbols: [{ name: "NYMEX:NG1!", displayName: "Natural gas" }, { name: "NYMEX:RB1!", displayName: "Gasoline (RBOB)" }, { name: "NYMEX:HO1!", displayName: "Heating oil" }] },
-        { name: "Currency", symbols: [{ name: "FX_IDC:USDPKR", displayName: "US dollar to PKR" }] }
-      ]
-    });
-    ["TVC:UKOIL", "TVC:USOIL"].forEach(function (sym, i) {
-      tv(i ? "tv-wti" : "tv-brent", "mini-symbol-overview", { symbol: sym, width: "100%", height: 220, locale: "en", dateRange: "1M", colorTheme: "dark", isTransparent: true, autosize: false, largeChartUrl: "" });
-    });
+    tv("tv-brent", "mini-symbol-overview", { symbol: "TVC:UKOIL", width: "100%", height: 240, colorTheme: "dark", isTransparent: true, dateRange: "1M" });
+    tv("tv-wti", "mini-symbol-overview", { symbol: "TVC:USOIL", width: "100%", height: 240, colorTheme: "dark", isTransparent: true, dateRange: "1M" });
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll("input[name=cf]"), function (r) { r.addEventListener("change", function () { if (H.length) calc(); }); });
-  ["ck", "cm"].forEach(function (id) { $(id).addEventListener("input", function () { if (H.length) calc(); }); });
-  var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(chart, 150); });
-  
-  render(SEED);
-  markets();
-
-  if (window.fetch) {
-    fetch("prices.json", { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw new Error("no data"); return r.json(); })
-      .then(function (d) { if (valid(d)) render(d); })
-      .catch(function () {});
-  }
+  loadTradingView();
+  fetch("prices.json", { cache: "no-store" })
+    .then(function (r) { return r.json(); })
+    .then(function (d) { if (d && d.history) render(d); })
+    .catch(function () {});
 })();
 </script>
 </body>
