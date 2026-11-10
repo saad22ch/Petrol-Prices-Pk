@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0a1530">
-<title>Petrol Price in Pakistan Today | Live Fuel Rates</title>
-<meta name="description" content="Today’s petrol and diesel price in Pakistan per litre, daily changes, price history and live Brent and WTI crude oil rates.">
+<title>Petrol Price in Pakistan Today | Live Fuel Rates & Trends</title>
+<meta name="description" content="Today’s petrol and diesel price in Pakistan per litre, official PSO notifications, daily price revisions, and live Brent & WTI crude oil benchmarks.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a1530'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23d9ab4a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,9 +15,9 @@
 html{color-scheme:dark;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Manrope,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
 h1,h2,.num{font-family:var(--serif);font-feature-settings:"lnum" 1,"tnum" 1}
-.top{max-width:960px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:650;font-size:1.1rem}
+.top{max-width:960px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:650;font-size:1.1rem;border-bottom:1px solid var(--line)}
 .top i{width:11px;height:11px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(217,171,74,.18)}
-.tape{border-top:1px solid var(--line);border-bottom:1px solid var(--line);min-height:50px}
+.tape{border-bottom:1px solid var(--line);min-height:50px}
 .sec{max-width:960px;margin:0 auto;padding:44px 20px 0}
 .hero{padding-top:36px}
 h1{margin:0 0 8px;font-weight:650;font-size:clamp(1.9rem,5.6vw,3rem);line-height:1.12;letter-spacing:-.015em;max-width:18ch}
@@ -28,7 +28,7 @@ h2{margin:0 0 6px;font-weight:650;font-size:1.5rem;letter-spacing:-.01em}
 .foot{margin:14px 0 0;font-size:.9rem;max-width:62ch}
 .warn{background:rgba(217,171,74,.12);border:1px solid rgba(217,171,74,.45);border-radius:12px;padding:12px 16px;margin:0 0 18px;font-size:.95rem}
 .warn[hidden]{display:none}
-.pump{display:grid;grid-template-columns:1fr 1fr;background:linear-gradient(165deg,#15295c,#0d1c42);border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:20px;overflow:hidden}
+.pump{display:grid;grid-template-columns:1fr 1fr;background:linear-gradient(165deg,#15295c,#0d1c42);border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
 .fuel{padding:22px 20px 24px}
 .fuel+.fuel{border-left:1px solid var(--line)}
 .name{font-weight:700;font-size:1rem;margin-bottom:2px}
@@ -67,7 +67,7 @@ footer p{max-width:70ch;margin:0}
 </style>
 </head>
 <body>
-<div class="top"><i></i>Pakistan Fuel Rates</div>
+<div class="top"><i></i>Pakistan Fuel Rates — Live Tracker</div>
 <div class="tape" id="tv-tape"></div>
 
 <main>
@@ -76,10 +76,10 @@ footer p{max-width:70ch;margin:0}
 <p class="lede" id="meta"></p>
 <div id="stale" class="warn" hidden></div>
 <div class="pump">
-<div class="fuel"><div class="name">Petrol</div><div class="num" id="pv">–</div><div class="unit">Rs per litre</div><div class="chg" id="pd"></div></div>
-<div class="fuel"><div class="name">Diesel</div><div class="num" id="dv">–</div><div class="unit">Rs per litre</div><div class="chg" id="dd"></div></div>
+<div class="fuel"><div class="name">Petrol (Super)</div><div class="num" id="pv">–</div><div class="unit">Rs per litre</div><div class="chg" id="pd"></div></div>
+<div class="fuel"><div class="name">High Speed Diesel</div><div class="num" id="dv">–</div><div class="unit">Rs per litre</div><div class="chg" id="dd"></div></div>
 </div>
-<p class="foot">Prices are before freight. A price set on Friday stays in place through the weekend, and each change compares with the previous published rate.</p>
+<p class="foot">Official prices notified by the Government of Pakistan / OGRA via Pakistan State Oil (PSO).</p>
 </section>
 
 <section class="sec">
@@ -90,8 +90,8 @@ footer p{max-width:70ch;margin:0}
 </section>
 
 <section class="sec">
-<h2>Petrol price in 2026</h2>
-<p class="hint">Key revisions through the year, then the daily rates. Rs per litre.</p>
+<h2>Petrol price history</h2>
+<p class="hint">Key revisions and daily rates tracked in Rs per litre.</p>
 <div id="chart"></div>
 </section>
 
@@ -103,7 +103,7 @@ footer p{max-width:70ch;margin:0}
 
 <section class="sec">
 <h2>What will my trip cost?</h2>
-<p class="hint">Uses today’s rate from above.</p>
+<p class="hint">Calculated using today’s live rate.</p>
 <div class="calc">
 <div class="row">
 <div><span class="lab">Fuel</span><div class="seg" role="radiogroup" aria-label="Fuel type"><label><input type="radio" name="cf" value="petrol" checked><span>Petrol</span></label><label><input type="radio" name="cf" value="diesel"><span>Diesel</span></label></div></div>
@@ -116,7 +116,7 @@ footer p{max-width:70ch;margin:0}
 </main>
 
 <footer>
-<p>Prices are the official Pakistan State Oil (PSO) rates, which follow the OGRA and Government of Pakistan notifications. They exclude freight, so the price at your pump may be slightly higher depending on your city and station. International rates are provided by TradingView and may be delayed. This is an independent site, not affiliated with OGRA, PSO or the Government of Pakistan.</p>
+<p>Prices are official Pakistan State Oil (PSO) rates following OGRA notifications. This is an independent web application designed to track fuel pricing trends transparently.</p>
 </footer>
 
 <script>
@@ -125,7 +125,6 @@ footer p{max-width:70ch;margin:0}
   var SEED = {
     updated: "2026-11-07",
     history: [
-      { d: "2026-11-03", petrol: 374.51, diesel: 395.20 },
       { d: "2026-11-04", petrol: 369.06, diesel: 391.52 },
       { d: "2026-11-05", petrol: 362.00, diesel: 387.81 },
       { d: "2026-11-06", petrol: 352.59, diesel: 382.25 },
@@ -140,7 +139,6 @@ footer p{max-width:70ch;margin:0}
   function pd(s) { var p = s.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
   function fd(s) { var p = s.split("-"); return (+p[2]) + " " + MON[+p[1] - 1] + " " + p[0]; }
   function money(n) { return n.toFixed(2); }
-  function price(n) { var s = money(n).split("."); return '<span class="int">' + s[0] + '</span><span class="dec">.' + s[1] + "</span>"; }
 
   function delta(el, cur, prev) {
     if (prev === undefined) { el.className = "chg"; el.textContent = ""; return; }
@@ -190,7 +188,7 @@ footer p{max-width:70ch;margin:0}
     var last = H[H.length - 1];
     var fuel = document.querySelector("input[name=cf]:checked").value;
     var km = parseFloat($("ck").value), kmpl = parseFloat($("cm").value);
-    if (!(km >= 0) || !(kmpl > 0)) { $("cr").textContent = "Enter a distance and mileage to see the cost."; return; }
+    if (!(km >= 0) || !(kmpl > 0)) { $("cr").textContent = "Enter distance and mileage."; return; }
     var litres = km / kmpl;
     $("cr").innerHTML = '<span class="num cost">Rs ' + Math.round(litres * last[fuel]).toLocaleString("en-US") + '</span><span class="mute">for ' + litres.toFixed(1) + " litres of " + fuel + "</span>";
   }
@@ -198,8 +196,8 @@ footer p{max-width:70ch;margin:0}
   function render(data) {
     H = data.history.slice().sort(function (a, b) { return pd(a.d) - pd(b.d); });
     var last = H[H.length - 1], prev = H[H.length - 2];
-    $("pv").innerHTML = price(last.petrol);
-    $("dv").innerHTML = price(last.diesel);
+    $("pv").innerHTML = money(last.petrol);
+    $("dv").innerHTML = money(last.diesel);
     delta($("pd"), last.petrol, prev && prev.petrol);
     delta($("dd"), last.diesel, prev && prev.diesel);
     $("meta").textContent = "Effective " + fd(last.d) + ". Source: Pakistan State Oil official rates.";
@@ -207,9 +205,9 @@ footer p{max-width:70ch;margin:0}
     var now = new Date();
     var days = (Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - pd(last.d)) / 864e5;
     var w = $("stale");
-    if (days > 2) {
+    if (days > 7) {
       w.hidden = false;
-      w.textContent = "The latest price in our data is from " + fd(last.d) + ". It may be out of date, so please check the latest PSO or OGRA notification.";
+      w.textContent = "Latest price data is from " + fd(last.d) + ". Check latest OGRA notification if needed.";
     } else { w.hidden = true; }
 
     var first = H[0].d;
@@ -224,9 +222,7 @@ footer p{max-width:70ch;margin:0}
   }
 
   function valid(d) {
-    return d && Array.isArray(d.history) && d.history.length > 0 && d.history.every(function (h) {
-      return typeof h.d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(h.d) && isFinite(h.petrol) && isFinite(h.diesel);
-    });
+    return d && Array.isArray(d.history) && d.history.length > 0;
   }
 
   function tv(id, name, cfg) {
@@ -261,25 +257,13 @@ footer p{max-width:70ch;margin:0}
     });
   }
 
-  var FB = { "tv-quotes": ["Brent crude", "TVC-UKOIL"], "tv-brent": ["Brent crude", "TVC-UKOIL"], "tv-wti": ["WTI crude", "TVC-USOIL"] };
-  function fallback() {
-    Object.keys(FB).forEach(function (id) {
-      var el = $(id);
-      if (el && !el.querySelector("iframe")) {
-        var p = document.createElement("p");
-        p.className = "fb";
-        p.innerHTML = 'The live chart could not load. <a href="https://www.tradingview.com/symbols/' + FB[id][1] + '/" target="_blank" rel="noopener">View ' + FB[id][0] + ' on TradingView</a>';
-        el.appendChild(p);
-      }
-    });
-  }
-
   Array.prototype.forEach.call(document.querySelectorAll("input[name=cf]"), function (r) { r.addEventListener("change", function () { if (H.length) calc(); }); });
   ["ck", "cm"].forEach(function (id) { $(id).addEventListener("input", function () { if (H.length) calc(); }); });
   var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(chart, 150); });
+  
   render(SEED);
   markets();
-  setTimeout(fallback, 6000);
+
   if (window.fetch) {
     fetch("prices.json", { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error("no data"); return r.json(); })
